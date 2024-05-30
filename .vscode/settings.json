@@ -14,7 +14,7 @@
     "editor.matchBrackets": "never",
     "editor.minimap.enabled": false,
     "editor.scrollbar.verticalScrollbarSize": 0,
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     "workbench.colorTheme": "GitHub Dark Default",
     "workbench.colorCustomizations": {
         "[GitHub Dark Default]": {

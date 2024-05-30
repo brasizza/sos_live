@@ -7,7 +7,10 @@ class MapModule extends FlutterGetItModulePageRouter {
   @override
   // TODO: implement bindings
   List<Bind<Object>> get bindings => [
-        Bind.singleton((i) => MapCubit(repository: i(), service: i())..nearby()),
+        Bind.singleton((i) => MapCubit(
+              repository: i(),
+              service: i(),
+            )..nearby()),
       ];
   @override
   // TODO: implement view

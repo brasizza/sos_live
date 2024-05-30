@@ -13,7 +13,11 @@ class _MapButtonState extends State<MapButton> {
   Widget build(BuildContext context) {
     return FloatingActionButton.small(
       onPressed: () {
-        showModalBottomSheet(context: context, builder: (context) => MapModule());
+        showModalBottomSheet(
+          showDragHandle: true,
+          context: context,
+          builder: (context) => MapModule(),
+        );
       },
       child: Icon(Icons.flood_outlined),
     );

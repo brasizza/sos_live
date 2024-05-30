@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:projeto_sos/src/data/models/user_model.dart';
 import 'package:projeto_sos/src/repositories/location/location_repository.dart';
-import 'package:projeto_sos/src/services/auth_service.dart';
+import 'package:projeto_sos/src/services/auth/auth_service.dart';
 
 part 'map_state.dart';
 
@@ -14,6 +15,22 @@ class MapCubit extends Cubit<MapState> {
         super(MapInitial());
 
   Future<void> nearby() async {
-    final response = await _repository.neaby(sessionToken: _service.user!.sessionToken);
+    emit(MapLoading());
+    await getLocation();
+  }
+
+  Future<void> getLocation() async {
+    final users = await _repository.neaby(
+      sessionToken: _service.user!.sessionToken,
+    );
+    if (users != null) {
+      if (users.isEmpty) {
+        emit(MapEmpty());
+      } else {
+        emit(MapLoaded(users));
+      }
+    } else {
+      emit(MapError());
+    }
   }
 }

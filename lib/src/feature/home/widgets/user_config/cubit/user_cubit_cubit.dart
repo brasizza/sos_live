@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:projeto_sos/src/data/models/user_model.dart';
 import 'package:projeto_sos/src/repositories/user/user_repository.dart';
-import 'package:projeto_sos/src/services/auth_service.dart';
+import 'package:projeto_sos/src/services/auth/auth_service.dart';
 
 part 'user_cubit_state.dart';
 

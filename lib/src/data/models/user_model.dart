@@ -62,7 +62,7 @@ class UserModel {
       username: map['username'] as String,
       name: map['name'] as String,
       visible: map['visible'] as bool,
-      sessionToken: map['sessionToken'] as String,
+      sessionToken: map['sessionToken'] ?? '',
       distance: double.tryParse(map['distance'].toString()) ?? 0.0, //(map['distance'] .toString()).toDouble(),
       integrantes: List<IntegranteModel>.from(
         (map['integrantes'] as List).map<IntegranteModel>(

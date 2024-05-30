@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:projeto_sos/src/data/models/user_model.dart';
 
 import './location_repository.dart';
 
@@ -28,11 +29,21 @@ class LocationRepositoryImpl implements LocationRepository {
   }
 
   @override
-  Future<bool> neaby({required String sessionToken}) async {
-    final resposne = await dio.post('/getNearby', data: {'sessionToken': sessionToken});
+  Future<List<UserModel>?> neaby({required String sessionToken}) async {
+    final resposne = await dio.post('/getNearby', data: {
+      'sessionToken': sessionToken,
+      'range': 100,
+    });
     if (resposne.statusCode == 200) {
-      print(resposne.data);
+      return (resposne.data['result']['nearbyLocations'] as List)
+          .map(
+            (user) => UserModel.fromMap(
+              user['user'],
+            ),
+          )
+          .toList();
+      //print(resposne.data);
     }
-    return true;
+    return null;
   }
 }
